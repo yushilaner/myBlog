@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>常用前端知识总结 | js判断数据类型,</title>
+    <meta name="description" content="js简单判断数据类型">
+    <link rel="shortcut icon" href="./favicon.ico">
+    
+    <link rel="preload" href="/myBlog/assets/css/0.styles.56354200.css" as="style"><link rel="preload" href="/myBlog/assets/js/app.02882a5d.js" as="script"><link rel="preload" href="/myBlog/assets/js/3.9b203686.js" as="script"><link rel="prefetch" href="/myBlog/assets/js/5.dc2a9d81.js"><link rel="prefetch" href="/myBlog/assets/js/1.18f693a2.js"><link rel="prefetch" href="/myBlog/assets/js/2.4bb8f7e8.js"><link rel="prefetch" href="/myBlog/assets/js/4.ccdcf3f6.js"><link rel="prefetch" href="/myBlog/assets/js/6.9f7ad172.js"><link rel="prefetch" href="/myBlog/assets/js/7.e9ee2551.js"><link rel="prefetch" href="/myBlog/assets/js/8.8a192da9.js"><link rel="prefetch" href="/myBlog/assets/js/9.4ae8ca22.js"><link rel="prefetch" href="/myBlog/assets/js/10.37868b46.js"><link rel="prefetch" href="/myBlog/assets/js/11.675ab4f9.js">
+    <link rel="stylesheet" href="/myBlog/assets/css/0.styles.56354200.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/myBlog/" class="home-link router-link-active"><img src="/myBlog/logo.png" class="logo"><span class="site-name can-hide">
+      常用前端知识总结
+    </span></a><div class="links"><nav class="nav-links can-hide"><div class="nav-item"><a href="/myBlog/" class="nav-link">博客列表</a></div><div class="nav-item"><a href="/myBlog/about/" class="nav-link">关于</a></div><!----></nav><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/myBlog/" class="nav-link">博客列表</a></div><div class="nav-item"><a href="/myBlog/about/" class="nav-link">关于</a></div><!----></nav><ul class="sidebar-links"><li><a href="/myBlog/blog/2019-12/2019-12-10.html" class="sidebar-link">博客目录</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>2019-12博客汇总</span><span class="arrow right"></span></p><!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>2020-01博客汇总</span><span class="arrow down"></span></p><ul class="sidebar-group-items"><li><a href="/myBlog/blog/2020-01/2020-01-01.html" class="active sidebar-link">js判断数据类型</a></li><li><a href="/myBlog/blog/2020-01/2020-01-04.html" class="sidebar-link">git常用的指令</a></li></ul></div></li></ul></div><div class="page"><div class="content"><p>通过对一个值使用 typeof 操作符会返回一下结果：</p><ul><li>‘undefined’：这个值未定义；</li><li>‘boolean’： 这个值是布尔值；</li><li>‘string’： 这个值是字符串；</li><li>‘number’：这个值是数值；</li><li>‘object’：这个值是对象或 null;</li><li>‘function’：这个值是函数；</li></ul><p>但是在实际应用中往往需要判断一个值是不是数组，这时候就用到了 instanceof，我们可以使用以下方法判断</p><pre class="language-js"><code><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr1 <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true 说明arr1是数组</span>
+</code></pre><p>当然以上方法有存在漏洞，当你的项目中有多个fram，你穿梭其中的时候，由于它们的执行环境不同，跨frame实例化的对象彼此是不共享原型链的，因此导致上述检测代码失效</p><p>下面有一种最为简单有效的方法，废话不多说，直接上代码了：</p><pre class="language-js"><code><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token operator">===</span><span class="token string">'[object Array]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true 则说明是数组</span>
+当然这个方法也适用于判断其他的数据类型：
+
+<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'123'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '[object String]'</span>
+ 
+<span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">908</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '[object Number]'</span>
+ 
+<span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '[object Function]'</span>
+ 
+<span class="token keyword">var</span> strNull <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>strNull<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '[object Null]'</span>
+ 
+<span class="token keyword">var</span> strBoolean <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>strBoolean<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// '[object Boolean]'</span>
+</code></pre></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/myBlog/blog/2019-12/2019-12-12.html" class="prev">
+          yarn常用命令
+        </a></span><span class="next"><a href="/myBlog/blog/2020-01/2020-01-04.html">
+          git常用的指令
+        </a> →
+      </span></p></div></div></div></div>
+    <script src="/myBlog/assets/js/3.9b203686.js" defer></script><script src="/myBlog/assets/js/app.02882a5d.js" defer></script>
+  </body>
+</html>
